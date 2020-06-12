@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <RunPostBuildEvent>1</RunPostBuildEvent>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharp.Data" Version="3.3.3" />
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(FarDevHome)' != ''">
+    <PropertyGroup>
+      <MyOutDir>$(FarDevHome)\FarNet\Lib\$(AssemblyName)</MyOutDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <MyBinFiles Include="$(OutDir)\FSharp.Data.*" Exclude="$(OutDir)\*.pdb" />
+    </ItemGroup>
+    <Copy DestinationFolder="$(MyOutDir)" SourceFiles="@(MyBinFiles)" SkipUnchangedFiles="true" />
+    <Exec Command="ib Post" />
+  </Target>
+</Project>

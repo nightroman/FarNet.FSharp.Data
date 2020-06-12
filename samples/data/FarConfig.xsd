@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+- generate by Visual Studio from exported Far config
+- replace xs:unsignedByte with xs:int (XmlProvider treats xs:unsignedByte as string)
+-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="farconfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="generalconfig">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="setting">
+                <xs:complexType>
+                  <xs:attribute name="key" type="xs:string" use="required" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="type" type="xs:string" use="required" />
+                  <xs:attribute name="value" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="colors">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="object">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="background" type="xs:string" use="required" />
+                  <xs:attribute name="foreground" type="xs:string" use="required" />
+                  <xs:attribute name="flags" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="associations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="filetype">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="command">
+                      <xs:complexType>
+                        <xs:attribute name="type" type="xs:int" use="required" />
+                        <xs:attribute name="enabled" type="xs:int" use="required" />
+                        <xs:attribute name="command" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="mask" type="xs:string" use="required" />
+                  <xs:attribute name="description" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pluginhotkeys">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="plugin">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="hotkey">
+                      <xs:complexType>
+                        <xs:attribute name="menu" type="xs:string" use="required" />
+                        <xs:attribute name="guid" type="xs:string" use="required" />
+                        <xs:attribute name="hotkey" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="key" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="hierarchicalconfig">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="key">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="key">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="value">
+                                  <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                    <xs:attribute name="type" type="xs:string" use="required" />
+                                    <xs:attribute name="value" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="key">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="value">
+                                        <xs:complexType>
+                                          <xs:attribute name="name" type="xs:string" use="required" />
+                                          <xs:attribute name="type" type="xs:string" use="required" />
+                                          <xs:attribute name="value" type="xs:int" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="highlight">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="hierarchicalconfig">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="key">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="key">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" name="value">
+                                  <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                    <xs:attribute name="type" type="xs:string" use="required" />
+                                    <xs:attribute name="value" type="xs:string" use="optional" />
+                                    <xs:attribute name="background" type="xs:string" use="optional" />
+                                    <xs:attribute name="foreground" type="xs:string" use="optional" />
+                                    <xs:attribute name="flags" type="xs:string" use="optional" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="panelmodes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="hierarchicalconfig">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="key">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element maxOccurs="unbounded" name="value">
+                            <xs:complexType>
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="type" type="xs:string" use="required" />
+                              <xs:attribute name="value" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="shortcuts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="hierarchicalconfig" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pluginsconfig">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="plugin">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="hierarchicalconfig">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="key">
+                            <xs:complexType>
+                              <xs:sequence minOccurs="0">
+                                <xs:choice maxOccurs="unbounded">
+                                  <xs:element name="key">
+                                    <xs:complexType>
+                                      <xs:sequence minOccurs="0">
+                                        <xs:element minOccurs="0" maxOccurs="unbounded" name="key">
+                                          <xs:complexType>
+                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                        <xs:element minOccurs="0" name="value">
+                                          <xs:complexType>
+                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                            <xs:attribute name="type" type="xs:string" use="required" />
+                                            <xs:attribute name="value" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                      <xs:attribute name="name" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element maxOccurs="unbounded" name="value">
+                                    <xs:complexType>
+                                      <xs:attribute name="name" type="xs:string" use="required" />
+                                      <xs:attribute name="type" type="xs:string" use="required" />
+                                      <xs:attribute name="value" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:choice>
+                              </xs:sequence>
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="description" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="guid" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="packages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="package">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="version">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="log">
+                      <xs:complexType>
+                        <xs:attribute name="d" type="xs:date" use="required" />
+                        <xs:attribute name="n" type="xs:int" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="source" type="xs:string" use="optional" />
+            <xs:attribute name="hide" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="clean" type="xs:date" use="required" />
+      <xs:attribute name="saved" type="xs:date" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

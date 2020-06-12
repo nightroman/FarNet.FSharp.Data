@@ -1,0 +1,15 @@
+<!--sample-->
+<packages clean="2016-11-15" saved="2016-11-13">
+  <!--comment 1-->
+  <package name="FSharpFar" id="FarNet.FSharpFar">
+    <version name="0.0.1">
+      <log d="2016-08-24" n="23" />
+      <log d="2016-08-25" n="25" />
+    </version>
+    <version name="0.0.2">
+    </version>
+  </package>
+  <!--comment 2-->
+  <package name="Vessel" id="FarNet.Vessel">
+  </package>
+</packages>
