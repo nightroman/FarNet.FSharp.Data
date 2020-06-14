@@ -1,7 +1,6 @@
 // http://fsharp.github.io/FSharp.Data/library/CsvProvider.html
 // Read data from Stocks.csv and let CsvProvider infer types.
-// - Date ~ `DateTime`
-// - other values ~ `decimal`
+// - Date ~ `DateTime`, Volume ~ `int`, others ~ `decimal`
 // - mind names with spaces, ``Adj Close``
 
 open FSharp.Data
@@ -16,4 +15,4 @@ let data = Stocks.GetSample()
 
 // show data
 for row in data.Rows do
-    printfn "%O, %M, %M, %M, %M, %M" row.Date row.High row.Low row.Open row.Close row.``Adj Close``
+    printfn "%O, %M, %M, %M, %M, %i, %M" row.Date row.High row.Low row.Open row.Close row.Volume row.``Adj Close``

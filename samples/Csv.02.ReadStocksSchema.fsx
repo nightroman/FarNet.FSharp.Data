@@ -1,9 +1,10 @@
 // http://fsharp.github.io/FSharp.Data/library/CsvProvider.html
 // Give CsvProvider our schema and then read Stocks.csv.
-// - names are capitalized, even with the schema
+// - names are capitalized, even with our schema
 // - we use `float` instead of default `decimal`
 // - we rename "Adj Close" to "Adjacent"
-// - all field types follow our schema
+// - we exclude the field "Volume"
+// - types follow our schema
 
 open FSharp.Data
 

@@ -106,7 +106,7 @@ https://raw.githubusercontent.com/nightroman/FarNet/master/Install-FarNet.en.txt
 		<summary>$text</summary>
 		<description>$text</description>
 		<releaseNotes>https://github.com/nightroman/FarNet.FSharp.Data/blob/master/Release-Notes.md</releaseNotes>
-		<tags>FarManager FarNet FSharp CSV XML HTML</tags>
+		<tags>FarManager FarNet FSharp CSV XML JSON HTML</tags>
 	</metadata>
 </package>
 "@

@@ -1,5 +1,5 @@
 // http://fsharp.github.io/FSharp.Data/library/HtmlProvider.html
-// How to the latest info for NuGet packages.
+// How to get the latest info for NuGet packages.
 
 open FSharp.Data
 

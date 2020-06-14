@@ -8,14 +8,14 @@
 
 [FSharp.Data] package for [FarNet.FSharpFar]
 
-**Package**
+## Package
 
 The NuGet package [FarNet.FSharp.Data][NuGet] is designed for [FarNet.FSharpFar].
 To install FarNet packages, follow [these steps](https://raw.githubusercontent.com/nightroman/FarNet/master/Install-FarNet.en.txt).
 
 Once installed, the package is portable with Far Manager and available for F# scripts.
 
-**F# scripts**
+## F# scripts
 
 In your F# script directory create the configuration `*.fs.ini`:
 
