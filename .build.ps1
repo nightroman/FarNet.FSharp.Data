@@ -61,11 +61,9 @@ task Markdown {
 
 # Synopsis: Collect package files.
 task Package -If:$FarDevHome Markdown, {
-	$toModule = "z\tools\FarHome\FarNet\Lib\$ModuleName"
-	$fromModule = "$FarDevHome\FarNet\Lib\$ModuleName"
-
 	remove z
-	$null = mkdir $toModule
+	$toModule = mkdir "z\tools\FarHome\FarNet\Lib\$ModuleName"
+	$fromModule = "$FarDevHome\FarNet\Lib\$ModuleName"
 
 	Copy-Item -Destination $toModule @(
 		'README.htm'
