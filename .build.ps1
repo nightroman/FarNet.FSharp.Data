@@ -1,6 +1,6 @@
 <#
 .Synopsis
-	Build script (https://github.com/nightroman/Invoke-Build)
+	Build script, https://github.com/nightroman/Invoke-Build
 #>
 
 param(
@@ -28,12 +28,12 @@ task Post -If:$FarDevHome {
 
 	$xml = [xml](Get-Content "src\$ModuleName.fsproj")
 	$node = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]')
-	$from = "$env:USERPROFILE\.nuget\packages\FSharp.Data\$($node.Version)\lib\net45"
+	$from = "$HOME\.nuget\packages\FSharp.Data\$($node.Version)"
 
 	Copy-Item -Destination $to $(
 		"src\$ModuleName.ini"
-		"$from\FSharp.Data.xml"
-		"$from\FSharp.Data.DesignTime.dll"
+		"$from\lib\netstandard2.0\FSharp.Data.xml"
+		"$from\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
 	)
 }
 
@@ -67,7 +67,7 @@ task Package -If:$FarDevHome Markdown, {
 
 	Copy-Item -Destination $toModule @(
 		'README.htm'
-		'LICENSE.txt'
+		'LICENSE'
 		"$fromModule\FarNet.FSharp.Data.ini"
 		"$fromModule\FSharp.Data.dll"
 		"$fromModule\FSharp.Data.xml"

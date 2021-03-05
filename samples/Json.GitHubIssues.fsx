@@ -6,9 +6,7 @@
 
 open FSharp.Data
 
-[<Literal>]
-let sample = __SOURCE_DIRECTORY__ + "/data/Issues.json"
-type Data = JsonProvider<sample>
+type Data = JsonProvider<"data/Issues.json", ResolutionFolder=__SOURCE_DIRECTORY__>
 let data = Data.GetSamples()
 
 let trim (s: string) n =

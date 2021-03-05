@@ -1,7 +1,7 @@
 [NuGet]: https://www.nuget.org/packages/FarNet.FSharp.Data
 [GitHub]: https://github.com/nightroman/FarNet.FSharp.Data
 [/samples]: https://github.com/nightroman/FarNet.FSharp.Data/tree/master/samples
-[FSharp.Data]: http://fsharp.github.io/FSharp.Data
+[FSharp.Data]: https://fsprojects.github.io/FSharp.Data/
 [FarNet.FSharpFar]: https://github.com/nightroman/FarNet/tree/master/FSharpFar
 
 # FarNet.FSharp.Data
@@ -11,7 +11,7 @@
 ## Package
 
 The NuGet package [FarNet.FSharp.Data][NuGet] is designed for [FarNet.FSharpFar].
-To install FarNet packages, follow [these steps](https://raw.githubusercontent.com/nightroman/FarNet/master/Install-FarNet.en.txt).
+To install FarNet packages, follow [these steps](https://github.com/nightroman/FarNet#readme).
 
 Once installed, the package is portable with Far Manager and available for F# scripts.
 

@@ -7,9 +7,7 @@ open System
 open System.IO
 open System.Diagnostics
 
-[<Literal>]
-let schema = __SOURCE_DIRECTORY__ + @"/data/FarConfig.xsd"
-type Input = XmlProvider<Schema=schema>
+type Input = XmlProvider<Schema="data/FarConfig.xsd", ResolutionFolder=__SOURCE_DIRECTORY__>
 
 // export config once
 let source = Environment.ExpandEnvironmentVariables "%TEMP%/FarConfig.xml"

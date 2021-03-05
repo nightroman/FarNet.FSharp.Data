@@ -1,5 +1,9 @@
 # FarNet.FSharp.Data Release Notes
 
+## v0.0.3
+
+FSharp.Data 4.0.0
+
 ## v0.0.2
 
 Add JSON samples and JSON tag to package.
