@@ -85,7 +85,7 @@ FSharp.Data package for FarNet.FSharpFar
 The package is designed for FarNet.FSharpFar.
 To install FarNet packages, follow these steps:
 
-https://raw.githubusercontent.com/nightroman/FarNet/master/Install-FarNet.en.txt
+https://github.com/nightroman/FarNet#readme
 
 ---
 '@
