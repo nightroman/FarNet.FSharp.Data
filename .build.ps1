@@ -12,18 +12,18 @@ $ModuleName = 'FarNet.FSharp.Data'
 $env:FarDevHome = $FarDevHome = if (Test-Path 'C:\Bin\Far\x64') {'C:\Bin\Far\x64'} else {''}
 
 # Synopsis: Remove temp files.
-task Clean {
+task clean {
 	remove src\bin, src\obj, README.htm, *.nupkg, z
 }
 
 # Synopsis: Build and Post (post build target).
-task Build {
+task build {
 	Set-Location src
 	exec {dotnet build -c $Configuration}
 }
 
 # Synopsis: Post build target. Copy stuff.
-task Post -If:$FarDevHome {
+task post -If:$FarDevHome {
 	$to = "$FarDevHome\FarNet\Lib\$ModuleName"
 
 	$xml = [xml](Get-Content "src\$ModuleName.fsproj")
@@ -43,7 +43,7 @@ function Get-Version {
 }
 
 # Synopsis: Set $script:Version.
-task Version {
+task version {
 	($script:Version = Get-Version)
 }
 
@@ -60,7 +60,7 @@ task Markdown {
 }
 
 # Synopsis: Collect package files.
-task Package -If:$FarDevHome Markdown, {
+task package -If:$FarDevHome markdown, {
 	remove z
 	$toModule = mkdir "z\tools\FarHome\FarNet\Lib\$ModuleName"
 	$fromModule = "$FarDevHome\FarNet\Lib\$ModuleName"
@@ -76,7 +76,7 @@ task Package -If:$FarDevHome Markdown, {
 }
 
 # Synopsis: Make NuGet package.
-task NuGet -If:$FarDevHome Package, Version, {
+task pack -If:$FarDevHome package, version, {
 	$text = @'
 FSharp.Data package for FarNet.FSharpFar
 
@@ -113,8 +113,8 @@ https://github.com/nightroman/FarNet#readme
 }
 
 # Synopsis: Test samples.
-task Test {
+task test {
 	Invoke-Build ** tests
 }
 
-task . Build, Test, Clean
+task . build, test, clean
