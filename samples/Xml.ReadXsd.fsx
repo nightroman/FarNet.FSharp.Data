@@ -4,7 +4,9 @@
 open FSharp.Data
 
 // infer types using XSD
-type Data = XmlProvider<Schema="data/Packages.xsd", ResolutionFolder=__SOURCE_DIRECTORY__>
+[<Literal>]
+let schema = __SOURCE_DIRECTORY__ + "/data/Packages.xsd"
+type Data = XmlProvider<Schema=schema>
 
 // load data from a file
 let file = __SOURCE_DIRECTORY__ + "/data/Packages.xml"

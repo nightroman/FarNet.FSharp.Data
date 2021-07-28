@@ -6,7 +6,9 @@
 open FSharp.Data
 
 // infer from the sample
-type Stocks = CsvProvider<"data/Stocks.csv", ResolutionFolder=__SOURCE_DIRECTORY__>
+[<Literal>]
+let file = __SOURCE_DIRECTORY__ + "/data/Stocks.csv"
+type Stocks = CsvProvider<file>
 
 // load data (from the sample in this case)
 let data = Stocks.GetSample()
