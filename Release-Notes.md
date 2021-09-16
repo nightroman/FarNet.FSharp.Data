@@ -1,5 +1,9 @@
 # FarNet.FSharp.Data Release Notes
 
+## v0.0.7
+
+FSharp.Data 4.2.3
+
 ## v0.0.6
 
 FSharp.Data 4.2.0
