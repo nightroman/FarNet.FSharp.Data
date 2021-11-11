@@ -1,5 +1,11 @@
 # FarNet.FSharp.Data Release Notes
 
+## v0.0.8
+
+FSharp.Data 4.2.5
+
+Retire samples/Html.NuGetLatestVersion.fsx
+
 ## v0.0.7
 
 FSharp.Data 4.2.3
