@@ -48,7 +48,7 @@ task version {
 }
 
 # Synopsis: Convert markdown to HTML.
-task Markdown {
+task markdown {
 	assert (Test-Path $env:MarkdownCss)
 	exec { pandoc.exe @(
 		'README.md'
@@ -76,8 +76,8 @@ task package -If:$FarDevHome markdown, {
 }
 
 # Synopsis: Make NuGet package.
-task pack -If:$FarDevHome package, version, {
-	$text = @'
+task nuget -If:$FarDevHome package, version, {
+	$description = @'
 FSharp.Data package for FarNet.FSharpFar
 
 ---
@@ -86,10 +86,8 @@ The package is designed for FarNet.FSharpFar.
 To install FarNet packages, follow these steps:
 
 https://github.com/nightroman/FarNet#readme
-
----
 '@
-	# nuspec
+
 	Set-Content z\Package.nuspec @"
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
@@ -101,14 +99,13 @@ https://github.com/nightroman/FarNet#readme
 		<projectUrl>https://github.com/nightroman/$ModuleName</projectUrl>
 		<license type="expression">Apache-2.0</license>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<summary>$text</summary>
-		<description>$text</description>
+		<description>$description</description>
 		<releaseNotes>https://github.com/nightroman/FarNet.FSharp.Data/blob/master/Release-Notes.md</releaseNotes>
 		<tags>FarManager FarNet FSharp CSV XML JSON HTML</tags>
 	</metadata>
 </package>
 "@
-	# pack
+
 	exec { NuGet.exe pack z\Package.nuspec }
 }
 
