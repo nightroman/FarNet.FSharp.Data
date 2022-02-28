@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FSharp.Data" Version="4.2.6" />
+    <PackageReference Include="FSharp.Data" Version="4.2.8" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(FarDevHome)' != ''">
     <PropertyGroup>
