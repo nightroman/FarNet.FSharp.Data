@@ -4,34 +4,36 @@
 #>
 
 param(
-	$Configuration = (property Configuration Release)
+	$Configuration = (property Configuration Release),
+	$FarHome = (property FarHome C:\Bin\Far\x64)
 )
 
-Set-StrictMode -Version 2
+Set-StrictMode -Version 3
 $ModuleName = 'FarNet.FSharp.Data'
-$env:FarDevHome = $FarDevHome = if (Test-Path 'C:\Bin\Far\x64') {'C:\Bin\Far\x64'} else {''}
+$ModuleRoot = "$FarHome\FarNet\Lib\$ModuleName"
 
 # Synopsis: Remove temp files.
 task clean {
 	remove src\bin, src\obj, README.htm, *.nupkg, z
 }
 
-# Synopsis: Build and Post (post build target).
+# Synopsis: Build and publish (post build event).
 task build {
 	Set-Location src
-	exec {dotnet build -c $Configuration}
+	exec { dotnet build -c $Configuration }
 }
 
-# Synopsis: Post build target. Copy stuff.
-task post -If:$FarDevHome {
-	$to = "$FarDevHome\FarNet\Lib\$ModuleName"
+# Synopsis: Post build event.
+task publish {
+	Set-Location src
 
-	$xml = [xml](Get-Content "src\$ModuleName.fsproj")
+	$xml = [xml](Get-Content "$ModuleName.fsproj")
 	$node = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]')
 	$from = "$HOME\.nuget\packages\FSharp.Data\$($node.Version)"
 
-	Copy-Item -Destination $to $(
-		"src\$ModuleName.ini"
+	Copy-Item -Destination $ModuleRoot $(
+		"$ModuleName.ini"
+		"$from\lib\netstandard2.0\FSharp.Data.dll"
 		"$from\lib\netstandard2.0\FSharp.Data.xml"
 		"$from\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
 	)
@@ -60,23 +62,22 @@ task markdown {
 }
 
 # Synopsis: Collect package files.
-task package -If:$FarDevHome markdown, {
+task package markdown, {
 	remove z
 	$toModule = mkdir "z\tools\FarHome\FarNet\Lib\$ModuleName"
-	$fromModule = "$FarDevHome\FarNet\Lib\$ModuleName"
 
 	Copy-Item -Destination $toModule @(
 		'README.htm'
 		'LICENSE'
-		"$fromModule\FarNet.FSharp.Data.ini"
-		"$fromModule\FSharp.Data.dll"
-		"$fromModule\FSharp.Data.xml"
-		"$fromModule\FSharp.Data.DesignTime.dll"
+		"$ModuleRoot\FarNet.FSharp.Data.ini"
+		"$ModuleRoot\FSharp.Data.dll"
+		"$ModuleRoot\FSharp.Data.xml"
+		"$ModuleRoot\FSharp.Data.DesignTime.dll"
 	)
 }
 
 # Synopsis: Make NuGet package.
-task nuget -If:$FarDevHome package, version, {
+task nuget package, version, {
 	$description = @'
 FSharp.Data package for FarNet.FSharpFar
 

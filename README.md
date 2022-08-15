@@ -31,3 +31,7 @@ open FSharp.Data
 ```
 
 This is it. See [/samples].
+
+## See also
+
+- [Release Notes](https://github.com/nightroman/FarNet.FSharp.Data/blob/master/Release-Notes.md)
