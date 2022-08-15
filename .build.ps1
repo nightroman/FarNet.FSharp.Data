@@ -101,7 +101,7 @@ https://github.com/nightroman/FarNet#readme
 		<license type="expression">Apache-2.0</license>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description</description>
-		<releaseNotes>https://github.com/nightroman/FarNet.FSharp.Data/blob/master/Release-Notes.md</releaseNotes>
+		<releaseNotes>https://github.com/nightroman/FarNet.FSharp.Data/blob/main/Release-Notes.md</releaseNotes>
 		<tags>FarManager FarNet FSharp CSV XML JSON HTML</tags>
 	</metadata>
 </package>

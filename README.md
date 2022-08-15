@@ -1,6 +1,6 @@
 [NuGet]: https://www.nuget.org/packages/FarNet.FSharp.Data
 [GitHub]: https://github.com/nightroman/FarNet.FSharp.Data
-[/samples]: https://github.com/nightroman/FarNet.FSharp.Data/tree/master/samples
+[/samples]: https://github.com/nightroman/FarNet.FSharp.Data/tree/main/samples
 [FSharp.Data]: https://fsprojects.github.io/FSharp.Data/
 [FarNet.FSharpFar]: https://github.com/nightroman/FarNet/tree/master/FSharpFar
 
@@ -34,4 +34,4 @@ This is it. See [/samples].
 
 ## See also
 
-- [Release Notes](https://github.com/nightroman/FarNet.FSharp.Data/blob/master/Release-Notes.md)
+- [Release Notes](https://github.com/nightroman/FarNet.FSharp.Data/blob/main/Release-Notes.md)
