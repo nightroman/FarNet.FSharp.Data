@@ -2,12 +2,11 @@
   <PropertyGroup>
     <FarHome Condition="'$(FarHome)' == ''">C:\Bin\Far\x64</FarHome>
     <TargetFramework>net6.0</TargetFramework>
-    <RunPostBuildEvent>1</RunPostBuildEvent>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FSharp.Data" Version="4.2.10" />
+    <PackageReference Include="FSharp.Data" Version="5.0.2" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="ib publish -Configuration $(Configuration) -FarHome $(FarHome)" />

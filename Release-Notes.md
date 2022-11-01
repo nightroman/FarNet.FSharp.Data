@@ -1,5 +1,11 @@
 # FarNet.FSharp.Data Release Notes
 
+## v1.0.3
+
+FSharp.Data 5.0.2
+
+Remove `System.Xml.Linq` from ini.
+
 ## v1.0.2
 
 FSharp.Data 4.2.10

@@ -20,9 +20,9 @@ if not (File.Exists(source)) then
 let input = Input.Load(source)
 
 // show Associations
-for file in input.Associations.Filetypes do
-    printfn "Mask=%s Description=%s" file.Mask file.Description
-    for command in file.Commands do
+for file1 in input.Associations.Filetypes do
+    printfn "Mask=%s Description=%s" file1.Mask file1.Description
+    for command in file1.Commands do
         if command.Command <> "" then
             printfn "    Type=%i Enabled=%i Command=%s" command.Type command.Enabled command.Command
             printfn ""

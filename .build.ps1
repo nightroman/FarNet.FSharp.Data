@@ -33,6 +33,8 @@ task publish {
 
 	Copy-Item -Destination $ModuleRoot $(
 		"$ModuleName.ini"
+		"bin\$Configuration\net6.0\FarNet.FSharp.Data.dll"
+		"bin\$Configuration\net6.0\FarNet.FSharp.Data.xml"
 		"$from\lib\netstandard2.0\FSharp.Data.dll"
 		"$from\lib\netstandard2.0\FSharp.Data.xml"
 		"$from\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
@@ -115,4 +117,4 @@ task test {
 	Invoke-Build ** tests
 }
 
-task . build, test, clean
+task . build, clean
