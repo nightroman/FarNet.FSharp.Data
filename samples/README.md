@@ -4,8 +4,8 @@ The configuration file [.fs.ini](.fs.ini) provides the required references.
 For running by `fsi` scripts need directives like
 
 ```fsharp
-#r "System.Xml.Linq"
 #r @"C:\Bin\Far\x64\FarNet\Lib\FarNet.FSharp.Data\FSharp.Data.dll"
+#r @"C:\Bin\Far\x64\FarNet\Lib\FarNet.FSharp.Data\FSharp.Data.LiteralProviders.Runtime.dll"
 ```
 
 **See also**

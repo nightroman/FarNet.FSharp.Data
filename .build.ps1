@@ -26,18 +26,26 @@ task build {
 # Synopsis: Post build event.
 task publish {
 	Set-Location src
+	$null = mkdir $ModuleRoot -Force
 
 	$xml = [xml](Get-Content "$ModuleName.fsproj")
-	$node = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]')
-	$from = "$HOME\.nuget\packages\FSharp.Data\$($node.Version)"
+	$node1 = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]')
+	$from1 = "$HOME\.nuget\packages\FSharp.Data\$($node1.Version)"
+	$node2 = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.LiteralProviders"]')
+	$from2 = "$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$($node2.Version)"
 
 	Copy-Item -Destination $ModuleRoot $(
 		"$ModuleName.ini"
 		"bin\$Configuration\net6.0\FarNet.FSharp.Data.dll"
 		"bin\$Configuration\net6.0\FarNet.FSharp.Data.xml"
-		"$from\lib\netstandard2.0\FSharp.Data.dll"
-		"$from\lib\netstandard2.0\FSharp.Data.xml"
-		"$from\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
+		#
+		"$from1\lib\netstandard2.0\FSharp.Data.dll"
+		"$from1\lib\netstandard2.0\FSharp.Data.xml"
+		"$from1\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
+		#
+		"$from2\lib\netstandard2.0\FSharp.Data.LiteralProviders.Runtime.dll"
+		"$from2\typeproviders\fsharp41\netstandard2.0\DotEnvFile.dll"
+		"$from2\typeproviders\fsharp41\netstandard2.0\FSharp.Data.LiteralProviders.DesignTime.dll"
 	)
 }
 
@@ -112,8 +120,13 @@ https://github.com/nightroman/FarNet#readme
 	exec { NuGet.exe pack z\Package.nuspec }
 }
 
+# Synopsis: Test samples by FarHost.
+task testFarHost -If ($Host.Name -ne 'FarHost') {
+	Start-Far -Test 0 'ps: Invoke-Build ** tests'
+}
+
 # Synopsis: Test samples.
-task test {
+task test testFarHost, {
 	Invoke-Build ** tests
 }
 

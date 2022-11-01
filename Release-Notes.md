@@ -1,5 +1,9 @@
 # FarNet.FSharp.Data Release Notes
 
+## v1.1.0
+
+Include `FSharp.Data.LiteralProviders`, useful on its own and especially with `FSharp.Data`.
+
 ## v1.0.3
 
 FSharp.Data 5.0.2
