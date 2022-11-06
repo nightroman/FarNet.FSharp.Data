@@ -1,4 +1,3 @@
-// http://fsharp.github.io/FSharp.Data/library/JsonProvider.html
 // Show GitHub repository issues using JsonProvider.
 // How to get issues : https://developer.github.com/v3/issues/#list-repository-issues
 // This sample query : https://api.github.com/repos/nightroman/Helps/issues?state=all
@@ -6,8 +5,7 @@
 
 open FSharp.Data
 
-[<Literal>]
-let file = __SOURCE_DIRECTORY__ + "/data/Issues.json"
+let [<Literal>] file = __SOURCE_DIRECTORY__ + "/data/Issues.json"
 type Data = JsonProvider<file>
 let data = Data.GetSamples()
 
@@ -25,3 +23,10 @@ for x in data do
     printfn ""
     printfn "%s" (trim x.Body 200)
     printfn ""
+
+// test
+
+open Swensen.Unquote
+
+let res = data |> Seq.head
+test <@ res.User.Login = "mattmcnabb" @>

@@ -1,11 +1,9 @@
-// http://fsharp.github.io/FSharp.Data/library/XmlProvider.html
 // How to read XML from files and let XmlProvider infer types.
 
 open FSharp.Data
 
 // infer type from a sample file
-[<Literal>]
-let file = __SOURCE_DIRECTORY__ + "/data/Packages.xml"
+let [<Literal>] file = __SOURCE_DIRECTORY__ + "/data/Packages.xml"
 type Data = XmlProvider<file>
 
 // data from the sample

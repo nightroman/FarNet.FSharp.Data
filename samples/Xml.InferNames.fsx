@@ -1,4 +1,3 @@
-// http://fsharp.github.io/FSharp.Data/library/XmlProvider.html
 // How XmlProvider infers XML names.
 
 open FSharp.Data

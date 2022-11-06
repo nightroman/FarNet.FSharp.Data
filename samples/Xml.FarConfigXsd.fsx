@@ -1,4 +1,3 @@
-// http://fsharp.github.io/FSharp.Data/library/XmlProvider.html
 // How to use XmlProvider with XSD schema.
 // - Far config XML is exported to "%TEMP%/FarConfig.xml".
 
@@ -7,8 +6,7 @@ open System
 open System.IO
 open System.Diagnostics
 
-[<Literal>]
-let file = __SOURCE_DIRECTORY__ + "/data/FarConfig.xsd"
+let [<Literal>] file = __SOURCE_DIRECTORY__ + "/data/FarConfig.xsd"
 type Input = XmlProvider<Schema=file>
 
 // export config once

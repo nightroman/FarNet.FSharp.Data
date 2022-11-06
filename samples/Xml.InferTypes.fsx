@@ -1,4 +1,3 @@
-// http://fsharp.github.io/FSharp.Data/library/XmlProvider.html
 // How XmlProvider infers XML data types.
 
 open FSharp.Data
@@ -19,18 +18,18 @@ type Data = XmlProvider<"""
 """>
 
 let data = Data.GetSample()
+printfn "%A" data
 
-let test value expected =
-    let n = value.GetType().Name
-    printfn "%s %A" n value
-    if n <> expected then failwithf "Expected type %s." expected
+// test
 
-test data.Bool1 "Boolean"
-test data.Bool2 "Boolean"
-test data.Date1 "DateTime"
-test data.Date2 "DateTime"
-test data.Decimal "Decimal"
-test data.Float "Double"
-test data.Guid "Guid"
-test data.Int32 "Int32"
-test data.Int64 "Int64"
+open Swensen.Unquote
+
+test <@ data.Bool1 = true @>
+test <@ data.Bool2 = false @>
+test <@ data.Date1 = DateTime.Parse("1999-11-11") @>
+test <@ data.Date2 = DateTime.Parse("1999-1-1 1:2:3") @>
+test <@ data.Decimal = 1m @>
+test <@ data.Float = 1.0 @>
+test <@ data.Guid = Guid "e3ad1cfb-ab1d-4fde-80ca-4eb99a7c0512" @>
+test <@ data.Int32 = 1 @>
+test <@ data.Int64 = 9876543210L @>

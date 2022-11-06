@@ -8,3 +8,11 @@ printfn "v1=%s" v1
 let [<Literal>] v2 = Env<"OS">.Value
 let [<Literal>] v3 = Env<"Missing">.Value
 printfn "v2=%s v3=%s" v2 v3
+
+// test
+
+open Swensen.Unquote
+
+test <@ v1 = "Windows_NT" @>
+test <@ v2 = "Windows_NT" @>
+test <@ v3 = "" @>

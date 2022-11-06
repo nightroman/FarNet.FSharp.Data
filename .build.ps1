@@ -49,14 +49,9 @@ task publish {
 	)
 }
 
-# Get version from release notes.
-function Get-Version {
-	switch -Regex -File Release-Notes.md {'##\s+v(\d+\.\d+\.\d+)' {return $Matches[1]} }
-}
-
 # Synopsis: Set $script:Version.
 task version {
-	($script:Version = Get-Version)
+	($script:Version = switch -Regex -File Release-Notes.md {'##\s+v(\d+\.\d+\.\d+)' {$Matches[1]; break} })
 }
 
 # Synopsis: Convert markdown to HTML.
@@ -109,9 +104,8 @@ https://github.com/nightroman/FarNet#readme
 		<owners>Roman Kuzmin</owners>
 		<projectUrl>https://github.com/nightroman/$ModuleName</projectUrl>
 		<license type="expression">Apache-2.0</license>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description</description>
-		<releaseNotes>https://github.com/nightroman/FarNet.FSharp.Data/blob/main/Release-Notes.md</releaseNotes>
+		<releaseNotes>https://github.com/nightroman/$ModuleName/blob/main/Release-Notes.md</releaseNotes>
 		<tags>FarManager FarNet FSharp CSV XML JSON HTML</tags>
 	</metadata>
 </package>

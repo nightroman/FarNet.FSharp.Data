@@ -1,4 +1,3 @@
-// http://fsharp.github.io/FSharp.Data/library/HtmlProvider.html
 // How to get Far Manager stable and nightly builds info.
 
 open FSharp.Data
@@ -15,3 +14,10 @@ printfn "Nightly builds"
 
 data.``Nightly builds full changelog``.Values
 |> Seq.iter (printfn "%A")
+
+// test
+
+open Swensen.Unquote
+
+let res = data.``Stable builds``.Values |> Seq.head
+test <@ res.StartsWith("Far Manager") @>
