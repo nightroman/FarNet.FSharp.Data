@@ -36,8 +36,8 @@ task publish {
 
 	Copy-Item -Destination $ModuleRoot $(
 		"$ModuleName.ini"
-		"bin\$Configuration\net6.0\FarNet.FSharp.Data.dll"
-		"bin\$Configuration\net6.0\FarNet.FSharp.Data.xml"
+		"bin\$Configuration\net7.0\FarNet.FSharp.Data.dll"
+		"bin\$Configuration\net7.0\FarNet.FSharp.Data.xml"
 		#
 		"$from1\lib\netstandard2.0\FSharp.Data.dll"
 		"$from1\lib\netstandard2.0\FSharp.Data.xml"
