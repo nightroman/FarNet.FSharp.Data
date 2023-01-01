@@ -1,5 +1,5 @@
 [/samples]: https://github.com/nightroman/FarNet.FSharp.Data/tree/main/samples
-[FarNet.FSharpFar]: https://github.com/nightroman/FarNet/tree/master/FSharpFar
+[FarNet.FSharpFar]: https://github.com/nightroman/FarNet/tree/main/FSharpFar
 [FSharp.Data]: https://fsprojects.github.io/FSharp.Data/
 [FSharp.Data.LiteralProviders]: https://github.com/tarmil/fsharp.data.literalproviders
 

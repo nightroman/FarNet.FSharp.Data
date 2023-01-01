@@ -1,5 +1,5 @@
 // Show GitHub repository issues using JsonProvider.
-// How to get issues : https://developer.github.com/v3/issues/#list-repository-issues
+// How to get issues : https://docs.github.com/en/rest/issues/issues#list-repository-issues
 // This sample query : https://api.github.com/repos/nightroman/Helps/issues?state=all
 // (saved to Issues.json)
 

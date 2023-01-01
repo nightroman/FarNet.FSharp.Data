@@ -1,5 +1,9 @@
 # FarNet.FSharp.Data Release Notes
 
+## v2.0.1
+
+Maintenance.
+
 ## v2.0.0
 
 .NET 7
