@@ -29,25 +29,40 @@ task publish {
 	Set-Location src
 	$null = mkdir $ModuleRoot -Force
 
-	$xml = [xml](Get-Content "$ModuleName.fsproj")
-	$node1 = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]')
-	$from1 = "$HOME\.nuget\packages\FSharp.Data\$($node1.Version)"
-	$node2 = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.LiteralProviders"]')
-	$from2 = "$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$($node2.Version)"
+	$xml = [xml](Get-Content "$ModuleName.fsproj" -Raw)
+	$vMain = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]').Version
+	$vCsv = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Csv.Core"]').Version
+	$vHtml = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Html.Core"]').Version
+	$vJson = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Json.Core"]').Version
+	$vWorldBank = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.WorldBank.Core"]').Version
+	$vXml = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Xml.Core"]').Version
+	$vRU = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Runtime.Utilities"]').Version
+	$vLP = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.LiteralProviders"]').Version
 
 	Copy-Item -Destination $ModuleRoot $(
 		"$ModuleName.ini"
-		"bin\$Configuration\net7.0\FarNet.FSharp.Data.dll"
-		"bin\$Configuration\net7.0\FarNet.FSharp.Data.xml"
 		#
-		"$from1\lib\netstandard2.0\FSharp.Data.dll"
-		"$from1\lib\netstandard2.0\FSharp.Data.xml"
-		"$from1\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
+		"$HOME\.nuget\packages\FSharp.Data\$vMain\lib\netstandard2.0\FSharp.Data.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vMain\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
 		#
-		"$from2\lib\netstandard2.0\FSharp.Data.LiteralProviders.Runtime.dll"
-		"$from2\typeproviders\fsharp41\netstandard2.0\DotEnvFile.dll"
-		"$from2\typeproviders\fsharp41\netstandard2.0\FSharp.Data.LiteralProviders.DesignTime.dll"
+		"$HOME\.nuget\packages\FSharp.Data.Csv.Core\$vCsv\lib\netstandard2.0\FSharp.Data.Csv.Core.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.Html.Core\$vHtml\lib\netstandard2.0\FSharp.Data.Html.Core.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.Json.Core\$vJson\lib\netstandard2.0\FSharp.Data.Json.Core.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.WorldBank.Core\$vWorldBank\lib\netstandard2.0\FSharp.Data.WorldBank.Core.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.Xml.Core\$vXml\lib\netstandard2.0\FSharp.Data.Xml.Core.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.Runtime.Utilities\$vRU\lib\netstandard2.0\FSharp.Data.Runtime.Utilities.xml"
+		#
+		"$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$vLP\typeproviders\fsharp41\netstandard2.0\DotEnvFile.dll"
+		"$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$vLP\typeproviders\fsharp41\netstandard2.0\FSharp.Data.LiteralProviders.DesignTime.dll"
 	)
+
+	Set-Location $ModuleRoot
+	remove FSharp.Core.dll, cs, de, es, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-Hans, zh-Hant
 }
 
 # Synopsis: Set $script:Version.
@@ -82,10 +97,10 @@ task package markdown, {
 	Copy-Item -Destination $toModule @(
 		'README.htm'
 		'LICENSE'
-		"$ModuleRoot\FarNet.FSharp.Data.ini"
-		"$ModuleRoot\FSharp.Data.dll"
-		"$ModuleRoot\FSharp.Data.xml"
-		"$ModuleRoot\FSharp.Data.DesignTime.dll"
+		"$ModuleRoot\*.dll"
+		"$ModuleRoot\*.ini"
+		"$ModuleRoot\*.json"
+		"$ModuleRoot\*.xml"
 	)
 }
 
