@@ -11,13 +11,13 @@
     <Reference Include="$(FarHome)\FarNet\Modules\FSharpFar\FSharp.Core.dll">
       <Private>False</Private>
     </Reference>
-    <PackageReference Include="FSharp.Data" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.Csv.Core" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.Html.Core" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.Json.Core" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.WorldBank.Core" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.Xml.Core" Version="6.2.0" />
-    <PackageReference Include="FSharp.Data.Runtime.Utilities" Version="6.2.0" />
+    <PackageReference Include="FSharp.Data" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.Csv.Core" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.Html.Core" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.Json.Core" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.WorldBank.Core" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.Xml.Core" Version="6.3.0" />
+    <PackageReference Include="FSharp.Data.Runtime.Utilities" Version="6.3.0" />
     <PackageReference Include="FSharp.Data.LiteralProviders" Version="1.0.3" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
