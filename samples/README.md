@@ -18,3 +18,4 @@ Some scripts use [FarNet.FSharp.Unquote](https://github.com/nightroman/FarNet.FS
 - [HtmlProvider](https://fsprojects.github.io/FSharp.Data/library/HtmlProvider.html)
 - [JsonProvider](https://fsprojects.github.io/FSharp.Data/library/JsonProvider.html)
 - [XmlProvider](https://fsprojects.github.io/FSharp.Data/library/XmlProvider.html)
+- [HTTP Utilities](https://fsprojects.github.io/FSharp.Data/library/Http.html)

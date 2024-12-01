@@ -1,5 +1,13 @@
 # FarNet.FSharp.Data Release Notes
 
+## v3.1.0
+
+FSharp.Data 6.4.0
+
+Add HTTP utilities reference and samples.
+
+Remove World Bank from default references.
+
 ## v3.0.0
 
 .NET 8

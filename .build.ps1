@@ -30,39 +30,32 @@ task publish {
 	$null = mkdir $ModuleRoot -Force
 
 	$xml = [xml](Get-Content "$ModuleName.fsproj" -Raw)
-	$vMain = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]').Version
-	$vCsv = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Csv.Core"]').Version
-	$vHtml = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Html.Core"]').Version
-	$vJson = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Json.Core"]').Version
-	$vWorldBank = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.WorldBank.Core"]').Version
-	$vXml = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Xml.Core"]').Version
-	$vRU = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.Runtime.Utilities"]').Version
+	$vFD = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data"]').Version
 	$vLP = $xml.SelectSingleNode('Project/ItemGroup/PackageReference[@Include="FSharp.Data.LiteralProviders"]').Version
 
 	Copy-Item -Destination $ModuleRoot $(
 		"$ModuleName.ini"
 		#
-		"$HOME\.nuget\packages\FSharp.Data\$vMain\lib\netstandard2.0\FSharp.Data.xml"
-		"$HOME\.nuget\packages\FSharp.Data\$vMain\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.Csv.Core\$vCsv\lib\netstandard2.0\FSharp.Data.Csv.Core.xml"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.Html.Core\$vHtml\lib\netstandard2.0\FSharp.Data.Html.Core.xml"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.Json.Core\$vJson\lib\netstandard2.0\FSharp.Data.Json.Core.xml"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.WorldBank.Core\$vWorldBank\lib\netstandard2.0\FSharp.Data.WorldBank.Core.xml"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.Xml.Core\$vXml\lib\netstandard2.0\FSharp.Data.Xml.Core.xml"
-		#
-		"$HOME\.nuget\packages\FSharp.Data.Runtime.Utilities\$vRU\lib\netstandard2.0\FSharp.Data.Runtime.Utilities.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Csv.Core.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.DesignTime.dll"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Html.Core.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Http.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Json.Core.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Runtime.Utilities.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.Xml.Core.xml"
+		"$HOME\.nuget\packages\FSharp.Data\$vFD\typeproviders\fsharp41\netstandard2.0\FSharp.Data.WorldBank.Core.xml"
 		#
 		"$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$vLP\typeproviders\fsharp41\netstandard2.0\DotEnvFile.dll"
 		"$HOME\.nuget\packages\FSharp.Data.LiteralProviders\$vLP\typeproviders\fsharp41\netstandard2.0\FSharp.Data.LiteralProviders.DesignTime.dll"
 	)
 
 	Set-Location $ModuleRoot
-	remove FSharp.Core.dll, cs, de, es, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-Hans, zh-Hant
+	remove cs, de, es, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-Hans, zh-Hant,
+	FarNet.FSharp.Data.deps.json,
+	FarNet.FSharp.Data.dll,
+	FarNet.FSharp.Data.pdb,
+	FarNet.FSharp.Data.runtimeconfig.json,
+	FSharp.Core.dll
 }
 
 # Synopsis: Set $script:Version.
@@ -102,6 +95,33 @@ task package markdown, {
 		"$ModuleRoot\*.json"
 		"$ModuleRoot\*.xml"
 	)
+
+	$result = Get-ChildItem $toModule -Recurse -File -Name | Out-String
+	$sample = @'
+DotEnvFile.dll
+FarNet.FSharp.Data.ini
+FSharp.Data.Csv.Core.dll
+FSharp.Data.Csv.Core.xml
+FSharp.Data.DesignTime.dll
+FSharp.Data.dll
+FSharp.Data.Html.Core.dll
+FSharp.Data.Html.Core.xml
+FSharp.Data.Http.dll
+FSharp.Data.Http.xml
+FSharp.Data.Json.Core.dll
+FSharp.Data.Json.Core.xml
+FSharp.Data.LiteralProviders.DesignTime.dll
+FSharp.Data.LiteralProviders.Runtime.dll
+FSharp.Data.Runtime.Utilities.dll
+FSharp.Data.Runtime.Utilities.xml
+FSharp.Data.WorldBank.Core.dll
+FSharp.Data.WorldBank.Core.xml
+FSharp.Data.Xml.Core.dll
+FSharp.Data.Xml.Core.xml
+LICENSE
+README.htm
+'@
+	Assert-SameFile.ps1 -Text $sample $result $env:MERGE
 }
 
 # Synopsis: Make NuGet package.
